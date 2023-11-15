@@ -1,5 +1,5 @@
 Sources for the datasets
-email addresses - https://www.peopledatalabs.com/company-dataset
+websites - https://www.peopledatalabs.com/company-dataset
 
 Mail datasets
 kaggle email spam - https://www.kaggle.com/datasets/shantanudhakadd/email-spam-detection-dataset-classification
