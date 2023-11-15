@@ -1,0 +1,12 @@
+Sources for the datasets
+email addresses - https://www.peopledatalabs.com/company-dataset
+
+Mail datasets
+kaggle email spam - https://www.kaggle.com/datasets/shantanudhakadd/email-spam-detection-dataset-classification
+phishing emails kaggle - https://www.kaggle.com/datasets/subhajournal/phishingemails
+sms spam collection - https://archive.ics.uci.edu/dataset/228/sms+spam+collection
+spambase - https://archive.ics.uci.edu/dataset/94/spambase
+
+Phishing website datasets
+https://gregavrbancic.github.io/Phishing-Dataset/
+https://research.aalto.fi/en/datasets/phishstorm-phishing-legitimate-url-dataset
