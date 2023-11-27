@@ -1,4 +1,4 @@
 This folder contains all the algorithms that we will test, kindly update this file according once tested with the accuracy and any new metrics(attributes).
 
 
-Support Vector Machine Classification -> accuracy = 99.34, dataset = spam.csv
+Support Vector Machine Classification -> accuracy = 98.34, dataset = spam.csv
