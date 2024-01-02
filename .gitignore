@@ -3,3 +3,6 @@
 
 # datasets
 datasets
+
+# cache
+__pycache__
