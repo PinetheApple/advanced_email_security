@@ -4,7 +4,6 @@ websites - https://www.peopledatalabs.com/company-dataset
 Mail datasets
 kaggle_email_spam - https://www.kaggle.com/datasets/shantanudhakadd/email-spam-detection-dataset-classification
 phishing_emails_kaggle - https://www.kaggle.com/datasets/subhajournal/phishingemails
-sms_spam_collection - https://archive.ics.uci.edu/dataset/228/sms+spam+collection
 spambase - https://archive.ics.uci.edu/dataset/94/spambase
 
 Phishing website datasets
