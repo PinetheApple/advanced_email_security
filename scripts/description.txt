@@ -3,5 +3,5 @@ This folder contains all the algorithms that we will test, kindly update this fi
 
 Support Vector Machine Classification -> accuracy = 97.84, dataset = spam.csv
                                     --> accuracy = 90.31, dataset = spambase.data
-Naive Bayes Classification -> accuracy = 97.45, dataset = spam.csv
-Logistic Regression Classification -> accuracy = 99.67, dataset = spam.csv
+Naive Bayes Classification -> accuracy = 98.28, dataset = spam.csv
+Logistic Regression Classification -> accuracy = 98.09, dataset = spam.csv
