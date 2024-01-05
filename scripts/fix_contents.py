@@ -19,3 +19,10 @@ def separate_email(text) -> list:
     for link in links2:
         text = text.replace(link, " URL_HERE")
     return [text, links, email_addresses]
+
+
+# function that removes css from the contents of the email for better training
+def remove_css(text) -> str:
+    css_regex = r'(\.|#)?[A-z]+(-[A-z]+)?\s?\{(\s?[A-z]+(-[A-z]+)?\s?:\s?#?\s?[0-9A-z]+(-[A-z]+)?\s?;?)+.*\}'
+    text = re.sub(css_regex, "CSS_HERE", text)
+    return text
