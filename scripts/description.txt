@@ -3,7 +3,7 @@ This folder contains all the algorithms that we will test, kindly update this fi
 
 Support Vector Machine Classification -> accuracy = 97.84, dataset = spam.csv
                                     --> accuracy = 90.31, dataset = spambase.data
-                                    --> accuracy = , dataset = phishing_email.csv       # fill
+                                    --> accuracy = 96.48, dataset = phishing_email.csv
 Naive Bayes Classification            -> accuracy = 98.28, dataset = spam.csv
                                     --> accuracy = , dataset = spambase.data            # fill
                                     --> accuracy = 95.78, dataset = phishing_email.csv
