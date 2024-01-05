@@ -16,8 +16,6 @@ def separate_email(text) -> list:
     links2 = [link for link in links2 if re.fullmatch(
         invalid_regex, link) == None]
     links = links + links2
-    print(links)
     for link in links2:
         text = text.replace(link, " URL_HERE")
-    print(text)
     return [text, links, email_addresses]
