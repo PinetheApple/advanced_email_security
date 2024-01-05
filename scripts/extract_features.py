@@ -22,8 +22,7 @@ def gen_feature_set(text) -> list:
     capitalized_words = re.findall(r'[A-Z]+', text)
     if (len(capitalized_words) > 0):
         crl_total = sum(len(word) for word in capitalized_words)
-        crl_average = crl_total / \
-            len(capitalized_words) if len(capitalized_words) > 0 else 0
+        crl_average = crl_total / len(capitalized_words)
         crl_longest = max([len(word) for word in capitalized_words])
 
     return [val for val in wf_dict.values()] + [val for val in cf_dict.values()] + [crl_average, crl_longest, crl_total]
