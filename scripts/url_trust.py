@@ -4,6 +4,7 @@
 import time
 import requests
 import os
+from urllib.parse import unquote, urlsplit
 
 
 def update_file(url, local_path):
@@ -41,13 +42,25 @@ def check_file(local_path):
 
 def check_link(link) -> int:
     # returns -1 for error, 0 for safe, 1 for malicious
+    # return 2 for insecure
     local_path = "../datasets/maliciouslinks.txt"
+
+    link = unquote(link)  # decode url if it's encoded
+    scheme, netloc, path = separate_link(link)
     try:
         check_file(local_path)
         with open(local_path, 'r') as local_file:
             for line in local_file:
                 if line.strip() == link:
                     return 1
+                elif (netloc+path) in line:
+                    # check for exact match between netloc and path of both links
+                    mal_scheme, mal_netloc, mal_path = separate_link(
+                        line.strip())
+                    if (netloc == mal_netloc) and (path == mal_path):
+                        return 1
+            if scheme == 'http://':
+                return 2
             return 0
 
     except Exception as e:
@@ -55,4 +68,18 @@ def check_link(link) -> int:
         return -1
 
 
-print(check_link('http://194.48.250.44/ar'))
+def separate_link(link) -> list:
+    if not (link.startswith('http://')):
+        try:
+            response = requests.head('http://'+link, allow_redirects=True)
+            final_url = response.url
+            # Check if the final URL it redirects to is secure
+            if final_url.startswith('https://'):
+                link += 'https://'
+
+        except requests.RequestException:
+            pass
+
+    components = urlsplit(link)
+    # can return query and fragment as well
+    return [components.scheme, components.netloc, components.path]
