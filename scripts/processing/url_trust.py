@@ -42,7 +42,7 @@ def check_file(local_path):
 
 def check_link(link) -> int:
     # returns -1 for error, 0 for safe, 1 for malicious, 2 for insecure
-    local_path = "../datasets/maliciouslinks.txt"
+    local_path = "../../datasets/maliciouslinks.txt"
 
     link = unquote(link)  # decode url if it's encoded
     scheme, netloc, path = separate_link(link)
