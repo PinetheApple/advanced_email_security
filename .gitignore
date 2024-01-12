@@ -4,5 +4,8 @@
 # datasets
 datasets
 
+# models
+trained_models
+
 # cache
 __pycache__
