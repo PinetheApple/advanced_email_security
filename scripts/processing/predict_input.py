@@ -21,8 +21,8 @@ def classify_email(email) -> int:
     vectorizer = joblib.load('../../trained_models/vectorizer.joblib')
 
     spamBase_models = [svm_model_sb, naiveBayes_model_sb, logReg_model_sb]
-    # nonSpamBase_models = [svm_model_p, svm_model_s, naiveBayes_model_p,
-    #                       naiveBayes_model_s, logReg_model_p, logReg_model_s]
+    nonSpamBase_models = [svm_model_p, svm_model_s, naiveBayes_model_p,
+                          naiveBayes_model_s, logReg_model_p, logReg_model_s]
 
     pred_input1 = gen_feature_set(email).reshape(1, -1)
     email = remove_css(separate_email(email)[0])
@@ -37,13 +37,8 @@ def classify_email(email) -> int:
 
     print(prediction)
 
-    # for model in nonSpamBase_models:
-    prediction += naiveBayes_model_p.predict(pred_input2)
-    prediction += naiveBayes_model_s.predict(pred_input2)
-    prediction += logReg_model_p.predict(pred_input2)
-    # prediction += logReg_model_s.predict(pred_input2)
-    prediction += svm_model_p.predict(pred_input2)
-    prediction += svm_model_s.predict(pred_input2)
+    for model in nonSpamBase_models:
+        prediction += model.predict(pred_input2)
 
     return (prediction // 9)
 
