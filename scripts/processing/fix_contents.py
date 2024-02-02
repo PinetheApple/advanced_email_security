@@ -18,7 +18,7 @@ def separate_email(text) -> list:
     links = links + links2
     for link in links2:
         text = text.replace(link, " URL_HERE")
-    return [text, links, email_addresses]
+    return text, links, email_addresses
 
 
 # function that removes css from the contents of the email for better training
