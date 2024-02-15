@@ -54,7 +54,7 @@ def check_link(link) -> int:
                     return 1
                 elif (netloc+path) in line:
                     # check for exact match between netloc and path of both links
-                    mal_scheme, mal_netloc, mal_path = separate_link(
+                    _, mal_netloc, mal_path = separate_link(
                         line.strip())
                     if (netloc == mal_netloc) and (path == mal_path):
                         return 1

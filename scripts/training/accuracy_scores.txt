@@ -10,3 +10,12 @@ Naive Bayes Classification            -> accuracy = 94.85, dataset = spam.csv
 Logistic Regression Classification    -> accuracy = 98.73, dataset = spam.csv
                                     --> accuracy = 93.62, dataset = spambase.data
                                     --> accuracy = 96.32, dataset = phishing_email.csv
+
+SVM     -> no pre  -> 81.63, 82.94, 83.01, 96.57, 81.54
+           preproc -> 96.47, 96.38, 96.61, 96.68, 96.61
+
+N B     -> no pre  -> 97.31, 95.88, 96.32, 97.30, 96.14
+           preproc -> 97.16, 97.01, 97.21, 97.14, 97.04
+
+Log Reg -> no pre  -> 97.07, 96.96, 97.07, 97.18, 96.50
+           preproc -> 96.84, 96.60, 96.59, 96.59, 96.32

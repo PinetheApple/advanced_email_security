@@ -21,9 +21,6 @@ def analyze_email(email) -> list:
     email, links, _ = separate_email(email)
     email = remove_css(email)
 
-    if links == [] and len(email) < 30:  # if email is too short and has no links
-        return [0, 0, []]
-
     checked_links = [(link, check_link(link)) for link in links]
 
     lemmatizer = WordNetLemmatizer()
@@ -37,6 +34,9 @@ def analyze_email(email) -> list:
     for model in spam_models:
         spam_prediction += model.predict(pred_input)[0]
     spam_prediction = 1 if spam_prediction > 1 else 0
+
+    if links == [] and len(email) < 30:  # if email is too short and has no links
+        return [0, spam_prediction, []]
 
     for model in phishing_models:
         phishing_prediction += model.predict(pred_input)[0]
