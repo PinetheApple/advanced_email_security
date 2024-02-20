@@ -24,7 +24,7 @@ def add_metrics(Y_true, Y_predicted, pre=False):
         preproc['recall'].append(recall[2:4]+'.'+recall[4:7])
         preproc['roc_auc'].append(roc_auc[2:4]+'.'+roc_auc[4:7])
     else:
-        no_pre[''].append(accuracy[2:4]+'.'+accuracy[4:7])
+        no_pre['accuracy'].append(accuracy[2:4]+'.'+accuracy[4:7])
         no_pre['precision'].append(precision[2:4]+'.'+precision[4:7])
         no_pre['recall'].append(recall[2:4]+'.'+recall[4:7])
         no_pre['roc_auc'].append(roc_auc[2:4]+'.'+roc_auc[4:7])
