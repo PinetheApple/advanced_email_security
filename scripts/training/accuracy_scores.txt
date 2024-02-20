@@ -11,11 +11,38 @@ Logistic Regression Classification    -> accuracy = 98.73, dataset = spam.csv
                                     --> accuracy = 93.62, dataset = spambase.data
                                     --> accuracy = 96.32, dataset = phishing_email.csv
 
-SVM     -> no pre  -> 81.63, 82.94, 83.01, 96.57, 81.54
-           preproc -> 96.47, 96.38, 96.61, 96.68, 96.61
+SVM     -> no pre  -> accuracy  -> 81.63, 82.94, 83.01, 96.57, 81.54
+                      precision ->
+                      recall    ->
+                      roc_auc   ->
+           preproc -> accuracy  -> 96.47, 96.38, 96.61, 96.68, 96.61
+                      precision ->
+                      recall    ->
+                      roc_auc   ->
 
-N B     -> no pre  -> 97.31, 95.88, 96.32, 97.30, 96.14
-           preproc -> 97.16, 97.01, 97.21, 97.14, 97.04
+N B     -> no pre  -> accuracy  -> 97.31, 95.88, 96.32, 97.30, 96.14
+                      precision ->
+                      recall    ->
+                      roc_auc   ->
+           preproc -> accuracy  -> 97.16, 97.01, 97.21, 97.14, 97.04
+                      precision ->
+                      recall    ->
+                      roc_auc   ->
 
-Log Reg -> no pre  -> 97.07, 96.96, 97.07, 97.18, 96.50
-           preproc -> 96.84, 96.60, 96.59, 96.59, 96.32
+Log Reg -> no pre  -> accuracy  -> 97.07, 96.96, 97.07, 97.18, 96.50
+                      precision ->
+                      recall    ->
+                      roc_auc   ->
+           preproc -> accuracy  -> 96.84, 96.60, 96.59, 96.59, 96.32
+                      precision ->
+                      recall    ->
+                      roc_auc   ->
+
+Voting  -> no pre  -> accuracy  -> 96.92, 97.50, 97.12, 97.32, 97.50
+                      precision -> 95.30, 96.01, 95.25, 95.29, 96.22
+                      recall    -> 97.08, 97.65, 97.61, 97.88, 97.52
+                      roc_auc   -> 96.94, 97.53, 97.20, 97.42, 97.50
+           preproc -> accuracy  -> 98.40, 98.67, 98.28, 98.57, 98.82
+                      precision -> 96.72, 97.04, 96.23, 96.69, 97.21
+                      recall    -> 99.38, 99.62, 99.58, 99.70, 99.87
+                      roc_auc   -> 98.56, 98.84, 98.50, 98.78, 99.00
