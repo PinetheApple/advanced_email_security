@@ -59,10 +59,10 @@ for i in range(5):
     X = dataset[:, 0]
     Y = dataset[:, 1]
     Y = Y.astype('int32')
-    for i in range(X.shape[0]):
-        content = separate_email(X[i])[0]
+    for j in range(X.shape[0]):
+        content = separate_email(X[j])[0]
         content = remove_css(content)
-        X[i] = (" ").join([lemmatizer.lemmatize(word.lower(), pos='v')
+        X[j] = (" ").join([lemmatizer.lemmatize(word.lower(), pos='v')
                            for word in content.split(" ")])
     X_transformed = vectorizer.transform(X)
     X_train = X_transformed[0:13000, :]
