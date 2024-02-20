@@ -2,12 +2,15 @@
 import joblib
 from nltk.stem import WordNetLemmatizer
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
-from sklearn.linear_model import LogisticRegression
 import numpy as np
 import pandas as pd
 import sys
 sys.path.append('../')
 from processing.fix_contents import separate_email, remove_css
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.svm import SVC
 
 no_pre = {'accuracy':[], 'precision':[], 'recall':[], 'roc_auc':[]}  # stores performance metrics for model without preprocessing dataset
 preproc = {'accuracy':[], 'precision':[], 'recall':[], 'roc_auc':[]}  # stores metrics for model after preprocessing dataset
@@ -38,45 +41,49 @@ df["Category"] = df.Category.map({'Safe Email': 0, 'Phishing Email': 1})
 lemmatizer = WordNetLemmatizer()
 vectorizer = joblib.load('../../trained_models/vectorizer.joblib')
 
-for i in range(5):
-    dataset = df.values
-    np.random.shuffle(dataset)
+# pass desired model to generate metrics for
+def main(model):
+    for i in range(5):
+        dataset = df.values
+        np.random.shuffle(dataset)
 
-    X = dataset[:, 0]
-    Y = dataset[:, 1]
-    Y = Y.astype('int32')
-    X_transformed = vectorizer.transform(X)
-    X_train = X_transformed[0:13000, :]
-    Y_train = Y[0:13000]
-    X_test = X_transformed[13000:, :]
-    Y_test = Y[13000:]
+        X = dataset[:, 0]
+        Y = dataset[:, 1]
+        Y = Y.astype('int32')
+        X_transformed = vectorizer.transform(X)
+        X_train = X_transformed[0:13000, :]
+        Y_train = Y[0:13000]
+        X_test = X_transformed[13000:, :]
+        Y_test = Y[13000:]
 
-    model = LogisticRegression(max_iter=900)
-    model.fit(X_train, Y_train)
-    Y_predicted = model.predict(X_test)
-    add_metrics(Y_test, Y_predicted)
+        model1 = model
+        model1.fit(X_train, Y_train)
+        Y_predicted = model1.predict(X_test)
+        add_metrics(Y_test, Y_predicted)
 
-    X = dataset[:, 0]
-    Y = dataset[:, 1]
-    Y = Y.astype('int32')
-    for j in range(X.shape[0]):
-        content = separate_email(X[j])[0]
-        content = remove_css(content)
-        X[j] = (" ").join([lemmatizer.lemmatize(word.lower(), pos='v')
-                           for word in content.split(" ")])
-    X_transformed = vectorizer.transform(X)
-    X_train = X_transformed[0:13000, :]
-    Y_train = Y[0:13000]
-    X_test = X_transformed[13000:, :]
-    Y_test = Y[13000:]
+        X = dataset[:, 0]
+        Y = dataset[:, 1]
+        Y = Y.astype('int32')
+        for j in range(X.shape[0]):
+            content = separate_email(X[j])[0]
+            content = remove_css(content)
+            X[j] = (" ").join([lemmatizer.lemmatize(word.lower(), pos='v')
+                            for word in content.split(" ")])
+        X_transformed = vectorizer.transform(X)
+        X_train = X_transformed[0:13000, :]
+        Y_train = Y[0:13000]
+        X_test = X_transformed[13000:, :]
+        Y_test = Y[13000:]
 
-    model = LogisticRegression(max_iter=900)
+        model2 = model
 
-    model.fit(X_train, Y_train)
-    Y_predicted = model.predict(X_test)
-    add_metrics(Y_test, Y_predicted, True)
+        model2.fit(X_train, Y_train)
+        Y_predicted = model2.predict(X_test)
+        add_metrics(Y_test, Y_predicted, True)
 
-    print(i, ' completed')
+# main(LogisticRegression(max_iter=900))
+# main(MultinomialNB())
+main(SVC(C=100))
 
 print('No Preprocessing')
 for metric in no_pre:
