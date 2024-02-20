@@ -76,6 +76,8 @@ for i in range(5):
     Y_predicted = model.predict(X_test)
     add_metrics(Y_test, Y_predicted, True)
 
+    print(i, ' completed')
+
 print('No Preprocessing')
 for metric in no_pre:
     print(metric, no_pre[metric])
