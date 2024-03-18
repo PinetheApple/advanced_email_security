@@ -7,7 +7,7 @@ It is divided into three main components:
 
 -   ML models for classifying the primary contents of the email
 -   URL trust component to check links present in the email
--   File analysis component to check attachments present in the email for malware # TODO component
+-   Antivirus software to scan attachments - using ClamAV locally
 
 The ML models are trained on three different datasets that contain spam/phishing emails/messages using Logistic Regression, Naive Bayes and SVM.
 The url trust component uses a dataset of known malicious links to analyze links.
