@@ -21,11 +21,12 @@ class MyHandler(BaseHTTPRequestHandler):
             {'phishing': analyzed_email[0], 'spam': analyzed_email[1], 'links': analyzed_email[2]}).encode('utf-8'))
 
 
-def run_server(server_class=HTTPServer, handler_class=MyHandler, port=12345):
+def main(server_class=HTTPServer, handler_class=MyHandler, port=12345):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f"Server running on port {port}")
     httpd.serve_forever()
 
 
-run_server()
+if __name__ == "__main__":
+    main()
